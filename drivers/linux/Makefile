@@ -25,14 +25,14 @@ default: all
 ifeq ($(ARCH),aarch64)
 
 # Ionic mnic and mdev for drivers ARM
-include ${MKINFRA}/config_${ARCH}.mk
+# include ${MKINFRA}/config_${ARCH}.mk
 KSRC ?= ${NICDIR}/buildroot/output/${ASIC}/linux-headers
 KMOD_OUT_DIR ?= ${BLD_OUT_DIR}/drivers_submake
 KMOD_SRC_DIR ?= ${TOPDIR}/platform/drivers/linux-ionic
 ETH_KOPT += CONFIG_IONIC_MNIC=m
 ETH_KOPT += CONFIG_MDEV=m
 ETH_KOPT += CONFIG_MNET_UIO_PDRV_GENIRQ=m
-KOPT += CROSS_COMPILE=aarch64-linux-gnu-
+# KOPT += CROSS_COMPILE=aarch64-linux-gnu-
 KOPT += ARCH=arm64
 KCFLAGS += -DCONFIG_IONIC_MNIC
 KCFLAGS += -DCONFIG_MDEV
@@ -45,7 +45,7 @@ export PATH := $(PATH):$(TOOLCHAIN_DIR)/bin
 KSYMS_MNIC = "KBUILD_EXTRA_SYMBOLS=${KMOD_OUT_DIR}/Module.symvers.mnic"
 KSYMS = "${KSYMS_MNIC} ${KMOD_OUT_DIR}/Module.symvers.uio"
 
-DVER = $(shell cd $(KMOD_SRC_DIR) ; git describe --tags 2>/dev/null)
+# DVER = $(shell cd $(KMOD_SRC_DIR) ; git describe --tags 2>/dev/null)
 
 else
 
