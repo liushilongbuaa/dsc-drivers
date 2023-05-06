@@ -82,7 +82,7 @@ KBUILD_RULE = $(MAKE) -C $(KSRC) $(KOPT) M=$(CURDIR)
 mnic: KOPT+=$(ETH_KOPT)
 mnic:
 	@echo "===> Building MNIC driver "
-	touch $(KMOD_OUT_DIR)/Makefile
+	touch $(KMOD_OUT_DIR)/Makefile || true
 	$(MAKE) -C $(KSRC) V=1 M=$(KMOD_OUT_DIR) src=$(KMOD_SRC_DIR)/eth/ionic $(KOPT)
 	mv ${KMOD_OUT_DIR}/Module.symvers ${KMOD_OUT_DIR}/Module.symvers.mnic
 
